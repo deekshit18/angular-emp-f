@@ -11,28 +11,46 @@
    <div class="row mt-5">
         <div class="col-lg-3"></div>
         <div class="col-lg-6 border shadow p-5 ">
-            <Form>
-                <input type="text" class="form-control mb-2" placeholder="userId">
-                <input type="text" class="form-control mb-2" placeholder="username">
-                <input type="text" class="form-control mb-2" placeholder="Email">
-               
-              
-                <div class="dropdown">
-                    <a class="btn btn-light border dropdown-toggle w-100 " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 470px;">
-                     Status
-                    </a>
-                  
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Active</a></li>
-                      <li><a class="dropdown-item" href="#">Inactive</a></li>
-                    </ul>
-                  </div>   
-                  
-                 <div>
-                    <button class="btn btn-danger mt-5 me-4">cancel </button>
-                    <button class="btn btn-success mt-5">ADD </button>
+            <form class="col-md-8 mx-auto" (ngSubmit)="addEmployee()">
+                <div class="mb-3">
+                  <label for="userId" class="form-label">User Id</label>
+                  <input type="text" class="form-control" id="userId" name="empid" [(ngModel)]="employee.id" required pattern="[0-9]*" #employeeid="ngModel" >
+                  <span *ngIf="employeeid.invalid && employeeid.touched" class="text-danger">Invalid Id</span>
                 </div>
-            </Form>
+      
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" name="empname" [(ngModel)]="employee.name" required pattern="^[a-zA-Z]{3,}$" #employeename="ngModel">
+                  <span *ngIf="employeename.invalid && employeename.touched" class="text-danger">Invalid UserName</span>
+
+                </div>
+      
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="empemail" [(ngModel)]="employee.email" required email #employeeemail="ngModel">
+                  <span *ngIf="employeeemail.invalid && employeeemail.touched" class="text-danger">Invalid Email</span>
+
+                </div>
+      
+                <div class="mb-3">
+                  <label for="sts" class="form-label">Status</label>
+                  <select class="form-select" id="sts" name="empstatus" [(ngModel)]="employee.status" required  #employeestatus="ngModel">
+
+                    <option selected></option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    
+                  </select>
+                  <span *ngIf="employeestatus.invalid && employeestatus.touched" class="text-danger">Invalid Status</span>
+
+                </div>
+      
+                <div class="d-flex justify-content-center">
+                  <button type="button" (click)="cancelEmployee()" class="btn btn-danger me-3">Cancel</button>
+                  <button type="submit" class="btn btn-success">Add</button>
+                </div>
+              </form>
+
         </div>
         <div class="col-lg-3"></div>
    </div>
