@@ -9,7 +9,7 @@ import { employeeModel } from '../employee.model';
 })
 export class UsersComponent {
 allemp:employeeModel[]=[]
-
+searchkey:string=""
 constructor(private api:AdminapiService){}
 //oninit is an interface implement ngonit
 // call justafter constructer...
@@ -44,5 +44,11 @@ deleteemp(id:any){
   })
 }
 
+sortid(){
+  this.allemp.sort((a:any,b:any)=>a.id-b.id)
+}
+sortname(){
+  this.allemp.sort((a:any,b:any)=>a.name.localeCompare(b.name))
+}
 
 }

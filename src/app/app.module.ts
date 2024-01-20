@@ -10,7 +10,8 @@ import { UsersComponent } from './users/users.component';
 import { AddusersComponent } from './addusers/addusers.component';
 import { EditusersComponent } from './editusers/editusers.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { SearchPipe } from './search.pipe'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http'
     DashboardComponent,
     UsersComponent,
     AddusersComponent,
-    EditusersComponent
+    EditusersComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

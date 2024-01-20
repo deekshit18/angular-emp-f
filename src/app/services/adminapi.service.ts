@@ -34,4 +34,9 @@ deleteempapi(id:string){
   return this.http.get(`${this.server_URL}/employee/${id}`)
 
  }
+ editemployee(id:any,employee:any){
+  return this.http.put(`${this.server_URL}/employee/${id}`,employee)
+
+ }
+
 }
